@@ -1,0 +1,22 @@
+{
+  "name": "webcrawlertechniquestudy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndrewSRP/WebCrawlerTechniqueStudy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndrewSRP/WebCrawlerTechniqueStudy/issues"
+  },
+  "homepage": "https://github.com/AndrewSRP/WebCrawlerTechniqueStudy#readme",
+  "dependencies": {
+    "cheerio-httpcli": "^0.8.1"
+  }
+}
