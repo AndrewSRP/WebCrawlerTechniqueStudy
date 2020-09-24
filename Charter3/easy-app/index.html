@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <!-- https://electronjs.org/docs/tutorial/security#csp-meta-tag -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+</head>
+<body>
+    <h1>Hello World!</h1>
+    We are using node <script>document.write(process.versions.node)</script>,
+    Chrome <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>.
+<!--    <script type="application/javascript">-->
+<!--        import React from 'react';-->
+<!--        import ReactDOM from 'react-dom';-->
+<!--        import TodoApp from './components/TodoApp';-->
+
+<!--        ReactDOM.render(React.createComponent(TodoApp), document.getElementById('host'));-->
+<!--    </script>-->
+
+    <script>
+        var electron = require('electron')
+
+        var ipc = electron.ipcRenderer;
+        var info;
+
+        window.onload = () => {
+            info = document.getElementById('info')
+            testSync();
+            testAsync();
+        }
+        function testSync() {
+            var res = ipc.sendSync('mul-sync', {a: 30, b: 2})
+            msg('sync result=' + res)
+        }
+        function testAsync() {
+            ipc.send('mul-async', {a: 30, b: 2})
+
+            ipc.on('mul-async-reply', (event, arg) => {
+                msg("async result=" + arg)
+            })
+        }
+        function msg(m) {
+            info.innerHTML += m + "<br />"
+        }
+    </script>
+    <h2>IPC TEST</h2>
+    <p id="info"></p>
+</body>
+</html>
