@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/AndrewSRP/WebCrawlerTechniqueStudy#readme",
   "dependencies": {
-    "cheerio-httpcli": "^0.8.1"
+    "cheerio-httpcli": "^0.8.1",
+    "xml2js": "^0.4.23"
   }
 }
